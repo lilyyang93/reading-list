@@ -24,7 +24,7 @@ while selection != '3':
                     print("Author(s):",authors)
                     print("Publisher:",publisher)
                     
-                selection = input("\nSelect a book number to add it to your reading list. Select 0 to return home.\n\n>>>")
+                selection = input("\nSelect a book number to add it to your reading list. Press any key to return home.\n\n>>>")
 
             except:
                 print("\nUnable to retrieve books. Please try a different keyword.")
@@ -32,21 +32,21 @@ while selection != '3':
 
             if int(selection) >= 1 and int(selection) <= 5:
                 my_book = int(selection)
-                reading_list.append(response["items"][my_book-1]["volumeInfo"]["title"])
+                reading_list.append(response[my_book-1]["volumeInfo"]["title"])
 
                 print("\nYour reading list was updated.")
 
-                selection = input("Select 0 to return home.\n\n>>>")
+                selection = input("Press any key to return home\n\n>>>")
                 
         case '2': 
             if len(reading_list) == 0:
                 print("\nYou have not added any books to your reading list.\n")
 
-                selection = input("Select 0 to return home\n\n>>>")
+                selection = input("Press any key to return home\n\n>>>")
             else:
                 print("\nYour reading list: ",reading_list)
 
-                selection = input("\nSelect 0 to return home\n\n>>>")
+                selection = input("\nPress any key to return home\n\n>>>")
         
         case _:
             print("Please enter a valid option.\n")
