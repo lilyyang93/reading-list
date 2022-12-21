@@ -1,7 +1,7 @@
 # Reading List Command Line App 
-### via Google Books API 
+#### via Google Books API 
 
-#### Description:
+### Description:
 * a simple command line interface that allows a user to search for books with a keyword
 * with keyword input, the program will send an API request for relevant data utilizing Google Books API 
 * programming language: python
