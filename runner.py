@@ -12,22 +12,28 @@ while selection != '3':
     match selection:
         case '1':
             keyword = input("\nEnter your keyword:\n\n>>>")
+            max = 5 
 
-            books_response = requests.get(f"https://www.googleapis.com/books/v1/volumes?q={keyword}&projection=lite&maxResults=5&key={books_api_key}")
-            response = books_response.json()
+            books_response = requests.get(f"https://www.googleapis.com/books/v1/volumes?q={keyword}&projection=lite&maxResults={max}&key={books_api_key}")
+            books_data = books_response.json()
+            try: 
+                response = books_data.get("items")
+                for i in range(max):
+                    title = response[i]["volumeInfo"]["title"]
+                    authors = response[i]["volumeInfo"]["authors"] 
+                    publisher = response[i]["volumeInfo"].get("publisher", "None")
 
-            for i in range(5):
-                response_title = response["items"][i]["volumeInfo"]["title"]
-                response_authors = response["items"][i]["volumeInfo"]["authors"] 
-                response_publisher = response["items"][i]["volumeInfo"]["publisher"]
+                    print("\n")
+                    print(f"Book {i+1}")
+                    print("Title:",title)
+                    print("Author(s):",authors)
+                    print("Publisher:",publisher)
+                    
+                selection = input("\nSelect a book number to add it to your reading list. Select 0 to return home.\n\n>>>")
 
-                print("\n")
-                print(f"Book {i+1}")
-                print("Title: ",response_title)
-                print("Author(s): ",response_authors)
-                print("Publisher: ",response_publisher)
-
-            selection = input("\nSelect a book number to add it to your reading list. Select 0 to return home.\n\n>>>")
+            except:
+                print("\nUnable to retrieve books. Please try a different keyword.")
+                selection = input("\n(1) Search for books using a keyword\n(2) View your reading list\n(3) Exit\n\n>>>")
 
             if int(selection) >= 1 and int(selection) <= 5:
                 my_book = int(selection)
@@ -44,7 +50,7 @@ while selection != '3':
                 selection = input("Select 0 to return home\n\n>>>")
             else:
                 print("\nYour reading list: ",reading_list)
-                
+
                 selection = input("\nSelect 0 to return home\n\n>>>")
         
         case _:
