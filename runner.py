@@ -1,9 +1,4 @@
 import requests 
-from dotenv import load_dotenv 
-import os 
-
-load_dotenv()
-books_api_key = os.environ.get('apikey')
 
 reading_list = []
 selection = input("\n *** Welcome to Google Books! ***\n\nSelect a number:\n(1) Search for books using a keyword\n(2) View your reading list\n(3) Exit\n\n>>>")
@@ -14,7 +9,7 @@ while selection != '3':
             keyword = input("\nEnter your keyword:\n\n>>>")
             max = 5 
 
-            books_response = requests.get(f"https://www.googleapis.com/books/v1/volumes?q={keyword}&projection=lite&maxResults={max}&key={books_api_key}")
+            books_response = requests.get(f"https://www.googleapis.com/books/v1/volumes?q={keyword}&projection=lite&maxResults={max}")
             books_data = books_response.json()
             try: 
                 response = books_data.get("items")
