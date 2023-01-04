@@ -1,5 +1,7 @@
+#functionality related to API calls belong in this class
+
 import requests
-from classes.reading_list import ReadingList
+from classes.book import Book 
 
 class API:
     def get_books(keyword, max):
@@ -16,15 +18,4 @@ class API:
             print("\nUnable to retrieve books. Please try a different keyword.")
 
         elif items_retrieved <= max:
-            for i in range(items_retrieved):
-                title = response[i]["volumeInfo"]["title"]
-                authors = response[i]["volumeInfo"]["authors"] 
-                publisher = response[i]["volumeInfo"].get("publisher", "None")
-
-                print("\n")
-                print(f"Book {i+1}")
-                print("Title:",title)
-                print("Author(s):",authors)
-                print("Publisher:",publisher)
-
-            ReadingList.add_to_reading_list(response, items_retrieved)
+            Book.get_retrieved_books(response, items_retrieved)
