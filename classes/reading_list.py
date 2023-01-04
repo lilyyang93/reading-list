@@ -15,9 +15,9 @@ class ReadingList:
             elif int(selection_2) == 0:
                 print("\nReturning home.")
             elif int(selection_2) > len(books):
-                print("\nInvalid option, please try again.")
+                print("\nInvalid option, returning home.")
         except:
-            print("\nInvalid option, please try again.")
+            print("\nInvalid option, returning home.")
 
     def get_reading_list():
         if (len(reading_list) == 0):
