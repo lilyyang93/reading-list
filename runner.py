@@ -1,4 +1,3 @@
-import requests 
 from classes.api import API
 from classes.reading_list import ReadingList
 
