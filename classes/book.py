@@ -23,7 +23,6 @@ class Book:
         Book.clear_retrieved_books()
     
     def get_retrieved_books(response, items_retrieved):
-        
         for i in range(items_retrieved):
             id = response[i]["id"]
             title = response[i]["volumeInfo"]["title"]
