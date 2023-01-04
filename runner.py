@@ -59,15 +59,16 @@ while selection != '3':
                     print("Publisher:",publisher)
                     
                 selection_2 = input("\nSelect a book number to add it to your reading list. Press 0 to return home.\n\n>>>")
-                if int(selection_2) <= items_retrieved and int(selection_2) != 0:
-                    my_book = int(selection_2)
-                    reading_list.append(response[my_book-1]["volumeInfo"]["title"])
-                    print("\nYour reading list was updated.")
+                try:
+                    if int(selection_2) <= items_retrieved and int(selection_2) != 0:
+                        my_book = int(selection_2)
+                        reading_list.append(response[my_book-1]["volumeInfo"]["title"])
+                        print("\nYour reading list was updated.")
 
-                elif int(selection_2) == 0:
-                    print("\nReturning home.")
+                    elif int(selection_2) == 0:
+                        print("\nReturning home.")
 
-                else: 
+                except: 
                     print("\nPlease enter a valid option.")
                 
         case '2': 
