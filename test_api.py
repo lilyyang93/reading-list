@@ -3,14 +3,11 @@ from classes.api import API
 import requests
 
 """
-Test for:
 
--what are the “happy paths” that your app should handle under “normal” conditions? 
--what are the “sad paths” that your app should handle when dealing with edge cases? (Ex: API errors, user errors, etc?) 
-
--queries that return less than 5 books
--queries that return no books 
--user enters invalid interface input
+app should handle:
+-API edge case: when no publisher information is provided
+-API edge case: when fewer than the request # of books is returned, such as 3 instead of 5
+-API edge case: when no books are returned 
 
 """
 
